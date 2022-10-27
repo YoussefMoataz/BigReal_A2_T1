@@ -141,6 +141,7 @@ bool BigReal::operator==(BigReal anotherReal) {
 // Youssef
 int BigReal::size() {
 
+    // the sum of sizes of integer and decimal parts
     return integerPart.size() + decimalPart.size() + 1;
 
 }
@@ -148,6 +149,7 @@ int BigReal::size() {
 // Youssef
 int BigReal::sign() {
 
+    // the sign from integer BDI
     return realSign;
 
 }
