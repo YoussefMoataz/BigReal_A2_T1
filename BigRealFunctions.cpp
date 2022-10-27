@@ -86,7 +86,9 @@ BigReal::BigReal(string realNumber) {
 // Youssef
 BigReal::BigReal(BigDecimalInt bigInteger) {
 
+    // assign the real part with the BDI
     integerPart = bigInteger;
+    // assign the decimal part with zero
     decimalPart = BigDecimalInt(0);
 
 }
