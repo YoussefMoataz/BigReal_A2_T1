@@ -5,8 +5,34 @@
 // Youssef
 BigReal::BigReal(double realNumber) {
 
-    // call the real string constructor
-    BigReal(to_string(realNumber));
+    // assign the integer part
+    integerPart = BigDecimalInt(realNumber);
+
+    string realString = to_string(realNumber);
+
+    string decimalPartString = "";
+
+    // get the decimal point index
+    int pointIndex = realString.find('.');
+    // get the leading zeroes
+    int dec = pointIndex + 1;
+    for (; dec < realString.length(); ++dec) {
+
+        if (realString[dec] != '0') {
+            break;
+        }
+
+        decimalLeadingZeroes++;
+
+    }
+
+    // get the decimal part
+    for (; dec < realString.length(); ++dec) {
+        decimalPartString += realString[dec];
+    }
+
+    // only 6 digits, if less : complete with zeroes
+    decimalPart = BigDecimalInt(decimalPartString);
 
 }
 
@@ -60,6 +86,9 @@ BigReal::BigReal(string realNumber) {
 // Youssef
 BigReal::BigReal(BigDecimalInt bigInteger) {
 
+    integerPart = bigInteger;
+    decimalPart = BigDecimalInt(0);
+
 }
 
 // Copy constructor
@@ -110,7 +139,7 @@ bool BigReal::operator==(BigReal anotherReal) {
 // Youssef
 int BigReal::size() {
 
-    return integerPart.size() + decimalPart.size();
+    return integerPart.size() + decimalPart.size() + 1;
 
 }
 
@@ -125,7 +154,8 @@ int BigReal::sign() {
 ostream &operator<<(ostream &out, BigReal num) {
 
     // print the integer part, decimal point, leading zeroes, decimal part
-    out << num.integerPart.getDecimalStr() << "." << string(num.decimalLeadingZeroes, '0') << num.decimalPart.getDecimalStr();
+    out << num.integerPart.getDecimalStr() << "." << string(num.decimalLeadingZeroes, '0')
+        << num.decimalPart.getDecimalStr();
 
     return out;
 
