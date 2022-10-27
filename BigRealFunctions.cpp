@@ -132,7 +132,7 @@ ostream &operator<<(ostream &out, BigReal num) {
 }
 
 // Youssef
-istream &operator>>(istream &out, BigReal num) {
+istream &operator>>(istream &in, BigReal num) {
 
 }
 

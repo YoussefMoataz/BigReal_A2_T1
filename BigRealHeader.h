@@ -48,7 +48,7 @@ public:
 
     inline friend ostream &operator<<(ostream &out, BigReal num);
 
-    inline friend istream &operator>>(istream &out, BigReal num);
+    inline friend istream &operator>>(istream &in, BigReal num);
 };
 
 // End of the file
