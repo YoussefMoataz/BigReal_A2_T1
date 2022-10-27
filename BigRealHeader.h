@@ -15,8 +15,12 @@ using namespace std;
 
 class BigReal {
 private:
+    BigDecimalInt integerPart;
+    BigDecimalInt decimalPart;
 
-    int x;
+    // BDI removes leading zeroes, they are important in decimalPart, I store them
+    int decimalLeadingZeroes = 0;
+    int realSign;
 
 public:
     inline BigReal(double realNumber = 0.0); // Default constructor
@@ -47,4 +51,4 @@ public:
     inline friend istream &operator>>(istream &out, BigReal num);
 };
 
-// End of file
+// End of the file

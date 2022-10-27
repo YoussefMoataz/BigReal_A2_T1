@@ -31,7 +31,6 @@ BigDecimalInt::BigDecimalInt(string decStr) {
 
         }
 
-
     } else {
         cout << "Invalid Input";
     }
