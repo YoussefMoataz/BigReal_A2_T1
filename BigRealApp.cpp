@@ -32,7 +32,13 @@ int main() {
     cout << br4 << endl; // 235.0
     printDashes();
 
-
+    BigReal br5 = BigReal("-4522.0");
+    BigReal br6 = BigReal("5612");
+    BigReal br7 = br5;
+    BigReal br8 = br6;
+    cout << br7.sign() << endl; // -1
+    cout << br8 << endl; // 5612.0
+    printDashes();
 
     return 0;
 }

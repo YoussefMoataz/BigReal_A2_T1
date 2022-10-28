@@ -126,8 +126,8 @@ BigReal::BigReal(BigDecimalInt bigInteger) {
 
 }
 
-// Copy constructor
 // Youssef
+// Copy constructor
 BigReal::BigReal(const BigReal &other) {
 
     this->integerPart = other.integerPart;
@@ -142,8 +142,14 @@ BigReal::BigReal(BigReal &&other) {
 
 }
 
+// Youssef
 // Assignment operator
 BigReal &BigReal::operator=(BigReal &other) {
+
+    this->integerPart = other.integerPart;
+    this->decimalPart = other.decimalPart;
+    this->decimalLeadingZeroes = other.decimalLeadingZeroes;
+    this->realSign = other.realSign;
 
 }
 
