@@ -109,8 +109,20 @@ int main() {
     printDashes();
 
     BigReal br20(BigReal("0.1"));
-    cout << br20.sign() << endl;
-    cout << br20 << endl;
+    cout << br20.sign() << endl; // 0
+    cout << br20 << endl; // 0.1
+    printDashes();
+
+    BigReal br21 = BigReal("-1.1");
+//    cin >> br21;  // uncomment to get input
+    cout << br21.sign() << endl;
+    cout << br21 << endl;
+    printDashes();
+
+    BigReal br22 = BigReal("+1.1");
+//    cin >> br21;  // uncomment to get input
+    cout << br22.sign() << endl;
+    cout << br22 << endl;
     printDashes();
 
     return 0;

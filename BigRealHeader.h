@@ -49,7 +49,7 @@ public:
 
     inline friend ostream &operator<<(ostream &out, BigReal num);
 
-    inline friend istream &operator>>(istream &in, BigReal num);
+    inline friend istream &operator>>(istream &in, BigReal &num);
 
 };
 

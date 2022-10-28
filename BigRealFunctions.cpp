@@ -255,7 +255,11 @@ int BigReal::sign() {
 ostream &operator<<(ostream &out, BigReal num) {
 
     // print the integer part, decimal point, leading zeroes, decimal part
-    out << num.integerPart.getDecimalStr() << "." << string(num.decimalLeadingZeroes, '0')
+    out << num.integerPart.getDecimalStr();
+//    if (num.integerPart.sign() != 0){
+//        out << "0";
+//    }
+    out << "." << string(num.decimalLeadingZeroes, '0')
         << num.decimalPart.getDecimalStr();
 
     return out;
@@ -263,7 +267,104 @@ ostream &operator<<(ostream &out, BigReal num) {
 }
 
 // Youssef
-istream &operator>>(istream &in, BigReal num) {
+istream &operator>>(istream &in, BigReal &num) {
+
+    bool validBigReal = false;
+    string brInputString;
+
+    while (!validBigReal){
+
+        cout << "Enter a big real :" << endl;
+        cin >> brInputString;
+
+        // check if string match the real number syntax
+        regex filter1("^[+-]?[0-9]+");
+        regex filter2("^[+-]?[0-9]+[.][0]");
+        regex filter3("^[+-]?[0-9]+[.]?[0-9]+");
+
+        if (regex_match(brInputString, filter1)) {
+
+            // assign the BDIs
+            num.integerPart = BigDecimalInt(brInputString);
+            num.decimalPart = BigDecimalInt(0);
+
+            // assign leading zeroes
+            num.decimalLeadingZeroes = 0;
+
+            // assign the real sign
+            num.realSign = num.integerPart.sign();
+
+            validBigReal = true;
+
+        } else if (regex_match(brInputString, filter2)) {
+
+            string integerPartString = "";
+            // get the decimal point index
+            int pointIndex = brInputString.find('.');
+
+            // get the integer part
+            for (int i = 0; i < pointIndex; ++i) {
+                integerPartString += brInputString[i];
+            }
+
+            // assign the BDIs
+            num.integerPart = BigDecimalInt(integerPartString);
+            num.decimalPart = BigDecimalInt(0);
+
+            // assign leading zeroes
+            num.decimalLeadingZeroes = 0;
+            // assign the real sign
+            num.realSign = num.integerPart.sign();
+
+            validBigReal = true;
+
+        } else if (regex_match(brInputString, filter3)) {
+
+            string integerPartString = "", decimalPartString = "";
+
+            // get the decimal point index
+            int pointIndex = brInputString.find('.');
+
+            // get the integer part
+            for (int i = 0; i < pointIndex; ++i) {
+                integerPartString += brInputString[i];
+            }
+
+            // get the leading zeroes
+            int dec = pointIndex + 1;
+            for (; dec < brInputString.length(); ++dec) {
+
+                if (brInputString[dec] != '0') {
+                    break;
+                }
+
+                num.decimalLeadingZeroes++;
+
+            }
+
+            // get the decimal part
+            for (; dec < brInputString.length(); ++dec) {
+                decimalPartString += brInputString[dec];
+            }
+
+            // assign the BDIs
+            if (integerPartString == "0"){
+                num.integerPart = BigDecimalInt(0);
+            }else {
+                num.integerPart = BigDecimalInt(integerPartString);
+            }
+            num.decimalPart = BigDecimalInt(decimalPartString);
+
+            // assign the real sign
+            num.realSign = num.integerPart.sign();
+
+            validBigReal = true;
+
+        }
+
+    }
+
+    return in;
 
 }
 
