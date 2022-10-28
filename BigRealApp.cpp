@@ -108,6 +108,11 @@ int main() {
     cout << (BigDecimalInt("-6") < BigDecimalInt("10")) << endl;
     printDashes();
 
+    BigReal br20(BigReal("0.1"));
+    cout << br20.sign() << endl;
+    cout << br20 << endl;
+    printDashes();
+
     return 0;
 }
 

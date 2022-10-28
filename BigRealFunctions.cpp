@@ -101,7 +101,11 @@ BigReal::BigReal(string realNumber) {
         }
 
         // assign the BDIs
-        integerPart = BigDecimalInt(integerPartString);
+        if (integerPartString == "0"){
+            integerPart = BigDecimalInt(0);
+        }else {
+            integerPart = BigDecimalInt(integerPartString);
+        }
         decimalPart = BigDecimalInt(decimalPartString);
 
         // assign the real sign
