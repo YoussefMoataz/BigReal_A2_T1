@@ -176,7 +176,6 @@ BigReal &BigReal::operator=(BigReal &&other) {
     this->realSign = other.realSign;
 
     // remove "other"
-
     other.integerPart = 0;
     other.decimalPart = 0;
     other.decimalLeadingZeroes = 0;
@@ -244,24 +243,6 @@ ostream &operator<<(ostream &out, BigReal num) {
 
 // Youssef
 istream &operator>>(istream &in, BigReal num) {
-
-}
-
-// Youssef
-void BigReal::resetRemainder(){
-
-    // reset the remainder back to zero after operations done
-    this->realRemainder = 0;
-
-}
-
-// Youssef
-int BigReal::addToRemainder(){
-
-    // increase the remainder by one
-    realRemainder++;
-    // return the new value
-    return realRemainder;
 
 }
 

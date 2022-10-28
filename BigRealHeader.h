@@ -51,9 +51,6 @@ public:
 
     inline friend istream &operator>>(istream &in, BigReal num);
 
-    inline void resetRemainder();
-
-    inline int addToRemainder();
 };
 
 inline void printDashes();
