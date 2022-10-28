@@ -40,6 +40,18 @@ int main() {
     cout << br8 << endl; // 5612.0
     printDashes();
 
+    BigReal br9 (BigReal("-50"));
+    BigReal br10 (BigReal("300"));
+    cout << br9.sign() << endl; // -1
+    cout << br10 << endl; // 300.0
+    printDashes();
+
+    BigReal br11 = BigReal(BigReal("+1440"));
+    BigReal br12 = BigReal(BigReal("4044"));
+    cout << br11.sign() << endl; // 1
+    cout << br12 << endl; // 4044.0
+    printDashes();
+
     return 0;
 }
 
