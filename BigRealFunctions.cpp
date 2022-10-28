@@ -197,12 +197,34 @@ BigReal BigReal::operator-(BigReal &other) {
 
 // Mohamed
 bool BigReal::operator<(BigReal anotherReal) {
-
+    if (integerPart < anotherReal.integerPart)
+    {
+        return true;
+    }
+    else if (integerPart == anotherReal.integerPart)
+    {
+        if (decimalPart < anotherReal.decimalPart)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Mohamed
 bool BigReal::operator>(BigReal anotherReal) {
-
+    if (integerPart > anotherReal.integerPart)
+    {
+        return true;
+    }
+    else if (integerPart == anotherReal.integerPart)
+    {
+        if (decimalPart > anotherReal.decimalPart)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Mohamed

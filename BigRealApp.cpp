@@ -71,9 +71,56 @@ int main() {
     {
         cout << "False!\n";
     }
-    
+    printDashes();
 
+    BigReal br16("5000.344");
+    BigReal br17("5000.244");
+    BigReal br18("-1000.344");
+    BigReal br19("-5000.344");
+    if (br16 > br17)    // true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
 
+    if (br16 > br18)    //true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+
+    if (br17 < br16)    //true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+
+    if (br18 > br19)    //true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+
+    if (br19 < br18)    //true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
     return 0;
 }
 
