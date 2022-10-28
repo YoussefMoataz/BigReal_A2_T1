@@ -21,6 +21,7 @@ private:
     // BDI removes leading zeroes, they are important in decimalPart, I store them
     int decimalLeadingZeroes = 0;
     int realSign;
+    int realRemainder = 0;
 
 public:
     inline BigReal(double realNumber = 0.0); // Default constructor
@@ -49,6 +50,7 @@ public:
     inline friend ostream &operator<<(ostream &out, BigReal num);
 
     inline friend istream &operator>>(istream &in, BigReal num);
+
 };
 
 inline void printDashes();

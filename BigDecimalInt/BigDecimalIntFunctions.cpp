@@ -291,10 +291,18 @@ bool BigDecimalInt::operator<(BigDecimalInt anotherDec) {
         for (int i = 1; i < this->decimalStr.length(); i++) {
             str1 += this->decimalStr[i];
         }
+    }else{
+        for (int i = 0; i < this->decimalStr.length(); i++) {
+            str1 += this->decimalStr[i];
+        }
     }
 
     if (anotherDec.sign() == 1 || anotherDec.sign() == -1) {
         for (int i = 1; i < anotherDec.decimalStr.length(); i++) {
+            str2 += anotherDec.decimalStr[i];
+        }
+    }else{
+        for (int i = 0; i < anotherDec.decimalStr.length(); i++) {
             str2 += anotherDec.decimalStr[i];
         }
     }
