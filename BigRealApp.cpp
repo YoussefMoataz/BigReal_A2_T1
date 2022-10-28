@@ -32,7 +32,26 @@ int main() {
     cout << br4 << endl; // 235.0
     printDashes();
 
-
+    BigReal br5("10000.2556");
+    BigReal br6("10000.2556");
+    BigReal br7("500.2556");
+    if (br5 == br6)     //true     
+    {   
+        cout << "True!\n";   
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+    if (br5 == br7)     //false
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+    
 
     return 0;
 }

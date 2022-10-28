@@ -174,6 +174,14 @@ bool BigReal::operator>(BigReal anotherReal) {
 
 // Mohamed
 bool BigReal::operator==(BigReal anotherReal) {
+    if(integerPart == anotherReal.integerPart and decimalPart == anotherReal.decimalPart)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 
 }
 
