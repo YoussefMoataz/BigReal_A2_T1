@@ -207,12 +207,9 @@ bool BigReal::operator>(BigReal anotherReal) {
 
 // Mohamed
 bool BigReal::operator==(BigReal anotherReal) {
-    if(integerPart == anotherReal.integerPart and decimalPart == anotherReal.decimalPart)
-    {
+    if (integerPart == anotherReal.integerPart and decimalPart == anotherReal.decimalPart) {
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 
@@ -247,6 +244,14 @@ ostream &operator<<(ostream &out, BigReal num) {
 
 // Youssef
 istream &operator>>(istream &in, BigReal num) {
+
+}
+
+// Youssef
+void BigReal::resetRemainder(){
+
+    // reset the remainder back to zero after operations done
+    this->realRemainder = 0;
 
 }
 
