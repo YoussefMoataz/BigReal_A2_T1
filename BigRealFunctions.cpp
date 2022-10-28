@@ -164,6 +164,7 @@ BigReal &BigReal::operator=(BigReal &other) {
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
     this->realSign = other.realSign;
 
+    return *this;
 }
 
 // Move assignment
@@ -181,7 +182,7 @@ BigReal &BigReal::operator=(BigReal &&other) {
     other.decimalLeadingZeroes = 0;
     other.realSign = 0;
 
-    cout << other << endl;
+    return *this;
 }
 
 // Hassan
