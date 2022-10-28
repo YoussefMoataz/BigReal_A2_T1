@@ -435,8 +435,6 @@ bool BigDecimalInt::operator==(BigDecimalInt anotherDec) {
     }
 
     if (this->sign() != -1 && anotherDec.sign() == -1) {
-        cout << "Str1 = " << str1 << endl;
-        cout << "Str2 = " << str2 << endl;
         return false;
     }
 
