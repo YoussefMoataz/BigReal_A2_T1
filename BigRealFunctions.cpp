@@ -130,6 +130,7 @@ BigReal::BigReal(BigDecimalInt bigInteger) {
 // Copy constructor
 BigReal::BigReal(const BigReal &other) {
 
+    // assign this (LHS object)
     this->integerPart = other.integerPart;
     this->decimalPart = other.decimalPart;
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
@@ -141,13 +142,13 @@ BigReal::BigReal(const BigReal &other) {
 // Move constructor
 BigReal::BigReal(BigReal &&other) {
 
+    // assign this (LHS object)
     this->integerPart = other.integerPart;
     this->decimalPart = other.decimalPart;
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
     this->realSign = other.realSign;
 
     // remove "other"
-
     other.integerPart = 0;
     other.decimalPart = 0;
     other.decimalLeadingZeroes = 0;
@@ -159,6 +160,7 @@ BigReal::BigReal(BigReal &&other) {
 // Assignment operator
 BigReal &BigReal::operator=(BigReal &other) {
 
+    // assign this (LHS object)
     this->integerPart = other.integerPart;
     this->decimalPart = other.decimalPart;
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
@@ -170,6 +172,7 @@ BigReal &BigReal::operator=(BigReal &other) {
 // Move assignment
 BigReal &BigReal::operator=(BigReal &&other) {
 
+    // assign this (LHS object)
     this->integerPart = other.integerPart;
     this->decimalPart = other.decimalPart;
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
