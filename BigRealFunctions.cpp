@@ -137,8 +137,21 @@ BigReal::BigReal(const BigReal &other) {
 
 }
 
+// Youssef
 // Move constructor
 BigReal::BigReal(BigReal &&other) {
+
+    this->integerPart = other.integerPart;
+    this->decimalPart = other.decimalPart;
+    this->decimalLeadingZeroes = other.decimalLeadingZeroes;
+    this->realSign = other.realSign;
+
+    // remove "other"
+
+    other.integerPart = 0;
+    other.decimalPart = 0;
+    other.decimalLeadingZeroes = 0;
+    other.realSign = 0;
 
 }
 
@@ -151,11 +164,25 @@ BigReal &BigReal::operator=(BigReal &other) {
     this->decimalLeadingZeroes = other.decimalLeadingZeroes;
     this->realSign = other.realSign;
 
+    return *this;
 }
 
 // Move assignment
 BigReal &BigReal::operator=(BigReal &&other) {
 
+    this->integerPart = other.integerPart;
+    this->decimalPart = other.decimalPart;
+    this->decimalLeadingZeroes = other.decimalLeadingZeroes;
+    this->realSign = other.realSign;
+
+    // remove "other"
+
+    other.integerPart = 0;
+    other.decimalPart = 0;
+    other.decimalLeadingZeroes = 0;
+    other.realSign = 0;
+
+    return *this;
 }
 
 // Hassan
