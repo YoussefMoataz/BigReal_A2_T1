@@ -32,18 +32,18 @@ int main() {
     cout << br4 << endl; // 235.0
     printDashes();
 
-    BigReal br5("10000.2556");
-    BigReal br6("10000.2556");
-    BigReal br7("500.2556");
-    if (br5 == br6)     //true     
-    {   
-        cout << "True!\n";   
-    }
-    else
-    {
-        cout << "False!\n";
-    }
-    if (br5 == br7)     //false
+    BigReal br5 = BigReal("-4522.0");
+    BigReal br6 = BigReal("5612");
+    BigReal br7 = br5;
+    BigReal br8 = br6;
+    cout << br7.sign() << endl; // -1
+    cout << br8 << endl; // 5612.0
+    printDashes();
+
+    BigReal br9("1000.2556");
+    BigReal br10("1000.2556");
+    BigReal br11("500.2556");
+    if (br9 == br10)    //true
     {
         cout << "True!\n";
     }
@@ -51,6 +51,15 @@ int main() {
     {
         cout << "False!\n";
     }
+    if (br9 == br11)    //true
+    {
+        cout << "True!\n";
+    }
+    else
+    {
+        cout << "False!\n";
+    }
+    printDashes();
     
 
     return 0;
