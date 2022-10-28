@@ -66,56 +66,48 @@ int main() {
         cout << "False!\n";
     }
     printDashes();
-    
+
 
     BigReal br16("5000.344");
     BigReal br17("5000.244");
     BigReal br18("-1000.344");
     BigReal br19("-5000.344");
-    if (br16 > br17)    // true
-    {
+    if (br16 > br17) {   // true
         cout << "True!\n";
-    }
-    else
-    {
+    } else {
         cout << "False!\n";
     }
 
-    if (br16 > br18)    //true
-    {
+    if (br16 > br18) {   //true
         cout << "True!\n";
-    }
-    else
-    {
+    } else {
         cout << "False!\n";
     }
 
-    if (br17 < br16)    //true
-    {
+    if (br17 < br16) {   //true
         cout << "True!\n";
-    }
-    else
-    {
+    } else {
         cout << "False!\n";
     }
 
-    if (br18 > br19)    //true
-    {
+    if (br18 > br19) {   //true
         cout << "True!\n";
-    }
-    else
-    {
+    } else {
         cout << "False!\n";
     }
 
-    if (br19 < br18)    //true
-    {
+    if (br19 < br18) {   //true
         cout << "True!\n";
-    }
-    else
-    {
+    } else {
         cout << "False!\n";
     }
+    printDashes();
+
+    cout << (BigDecimalInt("6") > BigDecimalInt("10")) << endl;
+    cout << (BigDecimalInt("6") < BigDecimalInt("10")) << endl;
+    cout << (BigDecimalInt("-6") < BigDecimalInt("10")) << endl;
+    printDashes();
+
     return 0;
 }
 
