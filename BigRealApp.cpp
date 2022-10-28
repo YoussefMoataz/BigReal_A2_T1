@@ -60,13 +60,18 @@ int main() {
     } else {
         cout << "False!\n";
     }
-    if (br13 == br15) {
+    if (br13 == br15) { // false
         cout << "True!\n";
     } else {
         cout << "False!\n";
     }
     printDashes();
 
+
+    cout << (BigDecimalInt("6") > BigDecimalInt("10")) << endl;
+    cout << (BigDecimalInt("6") < BigDecimalInt("10")) << endl;
+    cout << (BigDecimalInt("-6") < BigDecimalInt("10")) << endl;
+    printDashes();
 
 
     return 0;
