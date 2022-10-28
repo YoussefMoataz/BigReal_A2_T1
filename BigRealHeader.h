@@ -51,4 +51,6 @@ public:
     inline friend istream &operator>>(istream &in, BigReal num);
 };
 
+inline void printDashes();
+
 // End of the file

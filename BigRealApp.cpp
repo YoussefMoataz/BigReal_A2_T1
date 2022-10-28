@@ -15,12 +15,24 @@ int main() {
     cout << BigReal("+055.00125").sign() << endl; // 1
     cout << BigReal("055.00125").sign() << endl; // 0
     cout << BigReal("-055.00125").sign() << endl; // -1
+    printDashes();
 
     BigDecimalInt bi1 = BigDecimalInt("-0235");
     cout << BigReal(bi1) << endl; // -235.0
     BigDecimalInt bi2 = BigDecimalInt("235");
     cout << BigReal(bi1).size() << endl; // 6
     cout << BigReal(bi2).size() << endl; // 5
+    printDashes();
+
+    BigReal br1 = BigReal("-235");
+    BigReal br2 = BigReal("235.0");
+    BigReal br3 = BigReal(br1);
+    BigReal br4 = BigReal(br2);
+    cout << br3 << endl; // -235.0
+    cout << br4 << endl; // 235.0
+    printDashes();
 
     return 0;
 }
+
+// End of the file

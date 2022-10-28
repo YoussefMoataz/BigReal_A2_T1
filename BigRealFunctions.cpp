@@ -40,8 +40,38 @@ BigReal::BigReal(double realNumber) {
 BigReal::BigReal(string realNumber) {
 
     // check if string match the real number syntax
-    regex filter("^[+-]?[0-9]+[.]?[0-9]+");
-    if (regex_match(realNumber, filter)) {
+    regex filter1("^[+-]?[0-9]+");
+    regex filter2("^[+-]?[0-9]+[.][0]");
+    regex filter3("^[+-]?[0-9]+[.]?[0-9]+");
+
+    if (regex_match(realNumber, filter1)) {
+
+        // assign the BDIs
+        integerPart = BigDecimalInt(realNumber);
+        decimalPart = BigDecimalInt(0);
+
+        // assign the real sign
+        realSign = integerPart.sign();
+
+    } else if (regex_match(realNumber, filter2)) {
+
+        string integerPartString = "";
+        // get the decimal point index
+        int pointIndex = realNumber.find('.');
+
+        // get the integer part
+        for (int i = 0; i < pointIndex; ++i) {
+            integerPartString += realNumber[i];
+        }
+
+        // assign the BDIs
+        integerPart = BigDecimalInt(integerPartString);
+        decimalPart = BigDecimalInt(0);
+
+        // assign the real sign
+        realSign = integerPart.sign();
+
+    } else if (regex_match(realNumber, filter3)) {
 
         string integerPartString = "", decimalPartString = "";
 
@@ -77,8 +107,9 @@ BigReal::BigReal(string realNumber) {
         // assign the real sign
         realSign = integerPart.sign();
 
+
     } else {
-        cout << "Invalid Input";
+        cout << "Invalid Real Input";
     }
 
 }
@@ -90,11 +121,19 @@ BigReal::BigReal(BigDecimalInt bigInteger) {
     integerPart = bigInteger;
     // assign the decimal part with zero
     decimalPart = BigDecimalInt(0);
+    // assign the sign
+    realSign = bigInteger.sign();
 
 }
 
 // Copy constructor
+// Youssef
 BigReal::BigReal(const BigReal &other) {
+
+    this->integerPart = other.integerPart;
+    this->decimalPart = other.decimalPart;
+    this->decimalLeadingZeroes = other.decimalLeadingZeroes;
+    this->realSign = other.realSign;
 
 }
 
@@ -168,6 +207,11 @@ ostream &operator<<(ostream &out, BigReal num) {
 // Youssef
 istream &operator>>(istream &in, BigReal num) {
 
+}
+
+// Youssef
+void printDashes() {
+    cout << string(20, '-') << endl;
 }
 
 // End of the file
