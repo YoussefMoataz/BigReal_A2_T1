@@ -199,14 +199,10 @@ BigReal BigReal::operator-(BigReal &other) {
 
 // Mohamed
 bool BigReal::operator<(BigReal anotherReal) {
-    if (integerPart < anotherReal.integerPart)
-    {
+    if (integerPart < anotherReal.integerPart) {
         return true;
-    }
-    else if (integerPart == anotherReal.integerPart)
-    {
-        if (decimalPart < anotherReal.decimalPart)
-        {
+    } else if (integerPart == anotherReal.integerPart) {
+        if (decimalPart < anotherReal.decimalPart) {
             return true;
         }
     }
@@ -215,14 +211,10 @@ bool BigReal::operator<(BigReal anotherReal) {
 
 // Mohamed
 bool BigReal::operator>(BigReal anotherReal) {
-    if (integerPart > anotherReal.integerPart)
-    {
+    if (integerPart > anotherReal.integerPart) {
         return true;
-    }
-    else if (integerPart == anotherReal.integerPart)
-    {
-        if (decimalPart > anotherReal.decimalPart)
-        {
+    } else if (integerPart == anotherReal.integerPart) {
+        if (decimalPart > anotherReal.decimalPart) {
             return true;
         }
     }
