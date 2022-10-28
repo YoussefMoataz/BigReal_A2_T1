@@ -256,6 +256,16 @@ void BigReal::resetRemainder(){
 }
 
 // Youssef
+int BigReal::addToRemainder(){
+
+    // increase the remainder by one
+    realRemainder++;
+    // return the new value
+    return realRemainder;
+
+}
+
+// Youssef
 void printDashes() {
     cout << string(20, '-') << endl;
 }
