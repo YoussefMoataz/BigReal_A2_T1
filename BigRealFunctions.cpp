@@ -232,22 +232,18 @@ BigReal BigReal::operator+(BigReal &other) {
         decPartStr = Summed.getDecimalStr()[i] + decPartStr;
         i--;
     }
-//    cout << "biggest" << BiggestSize << endl;
-    if (decPartStr.size() < BiggestSize) {
-        for (int j = 0; j < BiggestSize - decPartStr.size(); i++) {
+    i = 0;
+    while (i < Summed.size() - BiggestSize) {
+        intPartStr += Summed.getDecimalStr()[i];
+        i++;
+    }
+    if (intPartStr.size()==0) {
+        intPartStr="0";
+        for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
             decPartStr = "0" + decPartStr;
         }
-    } else {
-        i = 0;
-        while (i < Summed.size() - BiggestSize) {
-//            cout << Summed.getDecimalStr()[i] << endl;
-            intPartStr += Summed.getDecimalStr()[i];
-            i++;
-        }
-
-    }
-    cout<<Summed.getDecimalStr()<<endl;
-    BigReal FinalResult = intPartStr + "." + decPartStr;
+    } 
+    BigReal FinalResult(intPartStr + "." + decPartStr);
     return FinalResult;
 }
 
@@ -292,21 +288,18 @@ BigReal BigReal::operator-(BigReal &other) {
         decPartStr = Summed.getDecimalStr()[i] + decPartStr;
         i--;
     }
-//    cout << "biggest" << BiggestSize << endl;
-    if (decPartStr.size() < BiggestSize) {
-        for (int j = 0; j < BiggestSize - decPartStr.size(); i++) {
+    i = 0;
+    while (i < Summed.size() - BiggestSize) {
+        intPartStr += Summed.getDecimalStr()[i];
+        i++;
+    }
+    if (intPartStr.size()==0) {
+        intPartStr="0";
+        for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
             decPartStr = "0" + decPartStr;
         }
-    } else {
-        i = 0;
-        while (i < Summed.size() - BiggestSize) {
-//            cout << Summed.getDecimalStr()[i] << endl;
-            intPartStr += Summed.getDecimalStr()[i];
-            i++;
-        }
-
-    }
-    BigReal FinalResult = intPartStr + "." + decPartStr;
+    } 
+    BigReal FinalResult(intPartStr + "." + decPartStr);
     return FinalResult;
 }
 
