@@ -242,7 +242,7 @@ BigReal BigReal::operator+(BigReal &other) {
         for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
             decPartStr = "0" + decPartStr;
         }
-    } 
+    }
     BigReal FinalResult(intPartStr + "." + decPartStr);
     return FinalResult;
 }
@@ -298,7 +298,7 @@ BigReal BigReal::operator-(BigReal &other) {
         for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
             decPartStr = "0" + decPartStr;
         }
-    } 
+    }
     BigReal FinalResult(intPartStr + "." + decPartStr);
     return FinalResult;
 }
