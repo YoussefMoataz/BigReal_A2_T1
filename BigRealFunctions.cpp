@@ -41,7 +41,7 @@ BigReal::BigReal(string realNumber) {
 
     // check if string match the real number syntax
     regex filter1("^[+-]?[0-9]+");
-    regex filter2("^[+-]?[0-9]+[.][0]");
+    regex filter2("^[+-]?[0-9]+[.][0]$");
     regex filter3("^[+-]?[0-9]+[.]?[0-9]+");
 
     if (regex_match(realNumber, filter1)) {
@@ -202,14 +202,14 @@ BigReal BigReal::operator+(BigReal &other) {
     int leadingZeros2 = other.decimalLeadingZeroes;
     int AddedZeros = 0;
     int BiggestSize;
-    string decPart1 = this->decimalPart.getDecimalStr();
-    string decPart2 = other.decimalPart.getDecimalStr();
-    for (int i = 0; i < leadingZeros1; i++) {
-        decPart1 = "0" + decPart1;
-    }
-    for (int i = 0; i < leadingZeros2; i++) {
-        decPart2 = "0" + decPart2;
-    }
+    string decPart1 = string('\0', this->decimalLeadingZeroes) + this->decimalPart.getDecimalStr();
+    string decPart2 = string ('\0', other.decimalLeadingZeroes) +other.decimalPart.getDecimalStr();
+//    for (int i = 0; i < leadingZeros1; i++) {
+//        decPart1 = "0" + decPart1;
+//    }
+//    for (int i = 0; i < leadingZeros2; i++) {
+//        decPart2 = "0" + decPart2;
+//    }
     if (decPart1.size() > decPart2.size()) {
         BiggestSize = decPart1.size();
         AddedZeros = decPart1.size() - decPart2.size();
