@@ -2,9 +2,9 @@
 
 int main() {
 
-//    cout << BigDecimalInt("0009") + BigDecimalInt(21); // 30
+    //    cout << BigDecimalInt("0009") + BigDecimalInt(21); // 30
 
-//    BigReal testcases here
+    //    BigReal testcases here
 
     cout << BigReal(+055.000125) << endl; // 55.000125
     cout << BigReal(055.205) << endl; // 55.205000
@@ -114,33 +114,33 @@ int main() {
     printDashes();
 
     BigReal br21 = BigReal("-1.1");
-//    cin >> br21;  // uncomment to get input
+    //    cin >> br21;  // uncomment to get input
     cout << br21.sign() << endl;
     cout << br21 << endl;
     printDashes();
 
     BigReal br22 = BigReal("+1.1");
-//    cin >> br21;  // uncomment to get input
+    //    cin >> br21;  // uncomment to get input
     cout << br22.sign() << endl;
     cout << br22 << endl;
     printDashes();
 
-    BigReal br23 ("9.1");
-    BigReal br24 ("10.901");
+    BigReal br23("9.1");
+    BigReal br24("10.901");
     cout << br23 + br24 << endl; // 20.001
     cout << br24 + br23 << endl; // 20.001
     printDashes();
 
-    BigReal br25 ("9.1");
-    BigReal br26 ("10.901");
+    BigReal br25("9.1");
+    BigReal br26("10.901");
     cout << (br25 - br26).sign() << endl; // -1
     cout << br25 - br26 << endl; // -1.801
     cout << (br26 - br25).sign() << endl; // 0
     cout << br26 - br25 << endl; // 1.801
     printDashes();
 
-    BigReal br27 ("-9.1");
-    BigReal br28 ("10.901");
+    BigReal br27("-9.1");
+    BigReal br28("10.901");
     cout << (br27 - br28).sign() << endl; // -1
     cout << br27 - br28 << endl; // -20.001
     cout << (br28 - br27).sign() << endl; // 0
@@ -153,6 +153,15 @@ int main() {
     cout << br29 + br30 << endl; // -1.801
     cout << (br30 - br29).sign() << endl; // -1
     cout << br30 + br29 << endl; // -1.801
+    printDashes();
+
+    cout << BigReal("0.0011") << endl; // 0.0011
+    cout << BigReal("0.22") << endl; // 0.22
+    printDashes();
+
+    BigReal br31("0.01");
+    BigReal br32("0.02");
+    cout << br31 + br32 << endl; // 0.03
     printDashes();
 
     return 0;
