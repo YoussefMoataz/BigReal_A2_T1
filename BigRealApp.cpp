@@ -155,13 +155,13 @@ int main() {
     cout << br30 + br29 << endl; // -1.801
     printDashes();
 
-    cout << BigReal("0.0011") << endl;
-    cout << BigReal("0.22") << endl;
+    cout << BigReal("0.0011") << endl; // 0.0011
+    cout << BigReal("0.22") << endl; // 0.22
     printDashes();
 
     BigReal br31("0.01");
     BigReal br32("0.02");
-    cout << br31 + br32 << endl;
+    cout << br31 + br32 << endl; // 0.03
     printDashes();
 
     return 0;
