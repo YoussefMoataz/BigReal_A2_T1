@@ -193,13 +193,130 @@ BigReal &BigReal::operator=(BigReal &&other) {
 
 // Hassan
 BigReal BigReal::operator+(BigReal &other) {
-
+    //definning variables
+    BigDecimalInt intPart1 = this->integerPart;
+    BigDecimalInt intPart2 = other.integerPart;
+    int sign1=intPart1.sign();
+    int sign2=intPart2.sign();
+    int leadingZeros1=this->decimalLeadingZeroes;
+    int leadingZeros2=other.decimalLeadingZeroes;
+    int AddedZeros=0;
+    int BiggestSize;
+    string decPart1 = this->decimalPart.getDecimalStr();
+    string decPart2 = other.decimalPart.getDecimalStr();
+    for (int i = 0; i < leadingZeros1; i++)
+    {
+        decPart1="0"+decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++)
+    {
+        decPart2="0"+decPart2;
+    }
+    if(decPart1.size()>decPart2.size()){
+        BiggestSize=decPart1.size();
+        AddedZeros=decPart1.size()-decPart2.size();
+        for(int i=0;i<AddedZeros;i++){
+            decPart2=decPart2+"0";
+        }
+    }
+    else if(decPart2.size()>decPart1.size()){
+        BiggestSize=decPart2.size();
+        AddedZeros=decPart2.size()-decPart1.size();
+        for(int i=0;i<AddedZeros;i++){
+            decPart1=decPart1+"0";
+        }
+    }
+    BiggestSize=decPart1.size();
+    BigDecimalInt B1=intPart1.getDecimalStr()+decPart1,B2=intPart2.getDecimalStr()+decPart2,Summed;
+    string decPartStr="",intPartStr="",Result;
+    Summed=B1+B2;
+    int i=Summed.size()-1;
+    while (i>Summed.size()-BiggestSize-1){
+        decPartStr=Summed.getDecimalStr()[i]+decPartStr;
+        i--;
+    }
+    cout<<"biggest"<<BiggestSize<<endl;
+    if(decPartStr.size()<BiggestSize){
+        for(int j=0;j<BiggestSize-decPartStr.size();i++){
+            decPartStr="0"+decPartStr;
+        }
+    }
+    else{
+        i=0;
+        while (i<Summed.size()-BiggestSize){
+            cout<<Summed.getDecimalStr()[i]<<endl;
+            intPartStr+=Summed.getDecimalStr()[i];
+            i++;
+        }
+        
+    }
+    BigReal FinalResult=intPartStr+"."+decPartStr;
+return FinalResult;
 }
 
 // Hassan
 BigReal BigReal::operator-(BigReal &other) {
-
+    //definning variables
+    BigDecimalInt intPart1 = this->integerPart;
+    BigDecimalInt intPart2 = other.integerPart;
+    int sign1=intPart1.sign();
+    int sign2=intPart2.sign();
+    int leadingZeros1=this->decimalLeadingZeroes;
+    int leadingZeros2=other.decimalLeadingZeroes;
+    int AddedZeros=0;
+    int BiggestSize;
+    string decPart1 = this->decimalPart.getDecimalStr();
+    string decPart2 = other.decimalPart.getDecimalStr();
+    for (int i = 0; i < leadingZeros1; i++)
+    {
+        decPart1="0"+decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++)
+    {
+        decPart2="0"+decPart2;
+    }
+    if(decPart1.size()>decPart2.size()){
+        BiggestSize=decPart1.size();
+        AddedZeros=decPart1.size()-decPart2.size();
+        for(int i=0;i<AddedZeros;i++){
+            decPart2=decPart2+"0";
+        }
+    }
+    else if(decPart2.size()>decPart1.size()){
+        BiggestSize=decPart2.size();
+        AddedZeros=decPart2.size()-decPart1.size();
+        for(int i=0;i<AddedZeros;i++){
+            decPart1=decPart1+"0";
+        }
+    }
+    BiggestSize=decPart1.size();
+    BigDecimalInt B1=intPart1.getDecimalStr()+decPart1,B2=intPart2.getDecimalStr()+decPart2,Summed;
+    string decPartStr="",intPartStr="",Result;
+    Summed=B1-B2;
+    int i=Summed.size()-1;
+    while (i>Summed.size()-BiggestSize-1){
+        decPartStr=Summed.getDecimalStr()[i]+decPartStr;
+        i--;
+    }
+    cout<<"biggest"<<BiggestSize<<endl;
+    if(decPartStr.size()<BiggestSize){
+        for(int j=0;j<BiggestSize-decPartStr.size();i++){
+            decPartStr="0"+decPartStr;
+        }
+    }
+    else{
+        i=0;
+        while (i<Summed.size()-BiggestSize){
+            cout<<Summed.getDecimalStr()[i]<<endl;
+            intPartStr+=Summed.getDecimalStr()[i];
+            i++;
+        }
+        
+    }
+    BigReal FinalResult=intPartStr+"."+decPartStr;
+return FinalResult;
 }
+
 
 // Mohamed
 bool BigReal::operator<(BigReal anotherReal) {
