@@ -149,12 +149,14 @@ int main() {
 
     BigReal br29("9.1");
     BigReal br30("-10.901");
-    BigDecimalInt br31("9");
-    BigDecimalInt br32("-10");
     cout << (br29 + br30).sign() << endl; // -1
     cout << br29 + br30 << endl; // -1.801
     cout << (br30 + br29).sign() << endl; // -1
     cout << br30 + br29 << endl; // -1.801
+    printDashes();
+
+    cout << BigReal("0.0011") << endl;
+    cout << BigReal("0.22") << endl;
     printDashes();
 
     return 0;
