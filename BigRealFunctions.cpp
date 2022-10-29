@@ -246,6 +246,7 @@ BigReal BigReal::operator+(BigReal &other) {
         }
 
     }
+    cout<<Summed.getDecimalStr()<<endl;
     BigReal FinalResult = intPartStr + "." + decPartStr;
     return FinalResult;
 }
