@@ -142,7 +142,7 @@ BigDecimalInt BigDecimalInt::operator+(BigDecimalInt anotherDec) {
                 strresult = to_string(intresult);
                 result = strresult + result;
             }
-            // result="-"+result;
+            result="-"+result;
             return result;
         }
         for (int i = StrNum1.size() - 1; i > -1; i--) {
