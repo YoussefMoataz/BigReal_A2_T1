@@ -42,7 +42,7 @@ BigReal::BigReal(string realNumber) {
     // check if string match the real number syntax
     regex filter1("^[+-]?[0-9]+");
     regex filter2("^[+-]?[0-9]+[.][0]$");
-    regex filter3("^[+-]?[0-9]+[.]?[0-9]+");
+    regex filter3("^[+-]?[0-9]+[.][0-9]+");
 
     if (regex_match(realNumber, filter1)) {
 

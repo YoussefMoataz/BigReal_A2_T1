@@ -164,6 +164,11 @@ int main() {
     cout << br31 + br32 << endl;
     printDashes();
 
+    BigReal br33("0.1");
+    BigReal br34("0.022");
+    cout << br33 + br34 << endl;
+    printDashes();
+
     return 0;
 }
 
