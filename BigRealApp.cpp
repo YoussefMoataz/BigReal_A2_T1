@@ -103,9 +103,9 @@ int main() {
     }
     printDashes();
 
-    cout << (BigDecimalInt("6") > BigDecimalInt("10")) << endl;
-    cout << (BigDecimalInt("6") < BigDecimalInt("10")) << endl;
-    cout << (BigDecimalInt("-6") < BigDecimalInt("10")) << endl;
+    cout << (BigDecimalInt("6") > BigDecimalInt("10")) << endl; // 0
+    cout << (BigDecimalInt("6") < BigDecimalInt("10")) << endl; // 1
+    cout << (BigDecimalInt("-6") < BigDecimalInt("10")) << endl; // 1
     printDashes();
 
     BigReal br20(BigReal("0.1"));
@@ -124,6 +124,37 @@ int main() {
     cout << br22.sign() << endl;
     cout << br22 << endl;
     printDashes();
+
+    BigReal br23 ("9.1");
+    BigReal br24 ("10.901");
+    cout << br23 + br24 << endl; // 20.001
+    cout << br24 + br23 << endl; // 20.001
+    printDashes();
+
+    BigReal br25 ("9.1");
+    BigReal br26 ("10.901");
+    cout << (br25 - br26).sign() << endl; // -1
+    cout << br25 - br26 << endl; // -1.801
+    cout << (br26 - br25).sign() << endl; // 0
+    cout << br26 - br25 << endl; // 1.801
+    printDashes();
+
+    BigReal br27 ("-9.1");
+    BigReal br28 ("10.901");
+    cout << (br27 - br28).sign() << endl; // -1
+    cout << br27 - br28 << endl; // -20.001
+    cout << (br28 - br27).sign() << endl; // 0
+    cout << br28 - br27 << endl; // 20.001
+    printDashes();
+
+    BigReal br29 ("9.1");
+    BigReal br30 ("-10.901");
+    cout << (br29 + br30).sign() << endl; // -1
+    cout << br29 + br30 << endl; // -1.801
+    cout << (br30 + br29).sign() << endl; // -1
+    cout << br30 + br29 << endl; // -1.801
+    printDashes();
+
 
     return 0;
 }
