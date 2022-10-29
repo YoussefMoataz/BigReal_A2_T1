@@ -147,11 +147,11 @@ int main() {
     cout << br28 - br27 << endl; // 20.001
     printDashes();
 
-    BigReal br29("9.1");
-    BigReal br30("-10.901");
+    BigReal br29 ("1.01301");
+    BigReal br30 ("0.01");
     cout << (br29 + br30).sign() << endl; // -1
     cout << br29 + br30 << endl; // -1.801
-    cout << (br30 + br29).sign() << endl; // -1
+    cout << (br30 - br29).sign() << endl; // -1
     cout << br30 + br29 << endl; // -1.801
     printDashes();
 
