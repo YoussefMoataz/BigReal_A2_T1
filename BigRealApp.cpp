@@ -159,9 +159,10 @@ int main() {
     cout << BigReal("0.22") << endl; // 0.22
     printDashes();
 
-    BigReal br31("-0.01");
-    BigReal br32("0.022");
+    BigReal br31("-0.02");
+    BigReal br32("0.01");
     cout << br31 + br32 << endl;
+    cout << (br31 + br32).size() << endl;
     printDashes();
 
     BigReal br33("0.1");

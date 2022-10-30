@@ -41,7 +41,7 @@ BigReal::BigReal(string realNumber) {
 
     // check if string match the real number syntax
     regex filter1("^[+-]?[0-9]+");
-    regex filter2("^[+-]?[0-9]+[.][0]$");
+    regex filter2("^[+-]?[0-9]+[.][0]");
     regex filter3("^[+-]?[0-9]+[.][0-9]+");
 
     if (regex_match(realNumber, filter1)) {
@@ -202,14 +202,14 @@ BigReal BigReal::operator+(BigReal &other) {
     int leadingZeros2 = other.decimalLeadingZeroes;
     int AddedZeros = 0;
     int BiggestSize;
-    string decPart1 = string('\0', this->decimalLeadingZeroes) + this->decimalPart.getDecimalStr();
-    string decPart2 = string ('\0', other.decimalLeadingZeroes) +other.decimalPart.getDecimalStr();
-//    for (int i = 0; i < leadingZeros1; i++) {
-//        decPart1 = "0" + decPart1;
-//    }
-//    for (int i = 0; i < leadingZeros2; i++) {
-//        decPart2 = "0" + decPart2;
-//    }
+    string decPart1 = this->decimalPart.getDecimalStr();
+    string decPart2 = other.decimalPart.getDecimalStr();
+    for (int i = 0; i < leadingZeros1; i++) {
+        decPart1 = "0" + decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++) {
+        decPart2 = "0" + decPart2;
+    }
     if (decPart1.size() > decPart2.size()) {
         BiggestSize = decPart1.size();
         AddedZeros = decPart1.size() - decPart2.size();
@@ -229,7 +229,10 @@ BigReal BigReal::operator+(BigReal &other) {
     Summed = B1 + B2;
     int i = Summed.size() - 1;
     while (i > Summed.size() - BiggestSize - 1) {
-        decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+        if(Summed.getDecimalStr()[i]>='0' && Summed.getDecimalStr()[i]<='9'){
+            decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+
+        }
         i--;
     }
     i = 0;
@@ -237,13 +240,22 @@ BigReal BigReal::operator+(BigReal &other) {
         intPartStr += Summed.getDecimalStr()[i];
         i++;
     }
+
     if (intPartStr.size()==0) {
-        intPartStr="0";
-        for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
+        if(Summed.sign()<0){
+            intPartStr="-0";
+        }
+        else{
+            intPartStr="0";
+        }
+        for (int j = 0; j < BiggestSize - (decPartStr.size()-1)-1; i++) {
             decPartStr = "0" + decPartStr;
         }
     }
-    BigReal FinalResult(intPartStr + "." + decPartStr);
+    string test=intPartStr + "." + decPartStr;
+    // cout<<test<<endl;
+    // cout<<test.length()<<endl;
+    BigReal FinalResult = BigReal(test);
     return FinalResult;
 }
 
@@ -258,8 +270,14 @@ BigReal BigReal::operator-(BigReal &other) {
     int leadingZeros2 = other.decimalLeadingZeroes;
     int AddedZeros = 0;
     int BiggestSize;
-    string decPart1 = string('\0', this->decimalLeadingZeroes) + this->decimalPart.getDecimalStr();
-    string decPart2 = string ('\0', other.decimalLeadingZeroes) +other.decimalPart.getDecimalStr();
+    string decPart1 = this->decimalPart.getDecimalStr();
+    string decPart2 = other.decimalPart.getDecimalStr();
+    for (int i = 0; i < leadingZeros1; i++) {
+        decPart1 = "0" + decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++) {
+        decPart2 = "0" + decPart2;
+    }
     if (decPart1.size() > decPart2.size()) {
         BiggestSize = decPart1.size();
         AddedZeros = decPart1.size() - decPart2.size();
@@ -279,7 +297,10 @@ BigReal BigReal::operator-(BigReal &other) {
     Summed = B1 - B2;
     int i = Summed.size() - 1;
     while (i > Summed.size() - BiggestSize - 1) {
-        decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+        if(Summed.getDecimalStr()[i]>='0' && Summed.getDecimalStr()[i]<='9'){
+            decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+
+        }
         i--;
     }
     i = 0;
@@ -287,13 +308,15 @@ BigReal BigReal::operator-(BigReal &other) {
         intPartStr += Summed.getDecimalStr()[i];
         i++;
     }
+
     if (intPartStr.size()==0) {
         intPartStr="0";
-        for (int j = 0; j < BiggestSize - (decPartStr.size()-1); i++) {
+        for (int j = 0; j < BiggestSize - (decPartStr.size()-1)-1; i++) {
             decPartStr = "0" + decPartStr;
         }
     }
-    BigReal FinalResult(intPartStr + "." + decPartStr);
+    string test=intPartStr + "." + decPartStr;
+    BigReal FinalResult = BigReal(test);
     return FinalResult;
 }
 
