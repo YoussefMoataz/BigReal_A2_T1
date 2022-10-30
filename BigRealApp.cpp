@@ -161,13 +161,13 @@ int main() {
 
     BigReal br31("-0.02");
     BigReal br32("0.01");
-    cout << br31 + br32 << endl;
-    cout << (br31 + br32).size() << endl;
+    cout << br31 + br32 << endl; // -0.01
+    cout << (br31 + br32).size() << endl; // 4
     printDashes();
 
     BigReal br33("0.1");
     BigReal br34("0.022");
-    cout << br33 + br34 << endl;
+    cout << br33 + br34 << endl; // 0.122
     printDashes();
 
     return 0;
