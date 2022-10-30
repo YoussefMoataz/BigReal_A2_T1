@@ -160,7 +160,7 @@ int main() {
     printDashes();
 
     BigReal br31("-0.02");
-    BigReal br32("-0.01");
+    BigReal br32("0.01");
     cout << br31 + br32 << endl;
     cout << (br31 + br32).size() << endl;
     printDashes();
