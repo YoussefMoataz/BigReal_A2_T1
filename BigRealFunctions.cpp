@@ -41,7 +41,7 @@ BigReal::BigReal(string realNumber) {
 
     // check if string match the real number syntax
     regex filter1("^[+-]?[0-9]+");
-    regex filter2("^[+-]?[0-9]+[.][0]");
+    regex filter2("^[+-]?[0-9]+[.][0]$");
     regex filter3("^[+-]?[0-9]+[.][0-9]+");
 
     if (regex_match(realNumber, filter1)) {
@@ -83,6 +83,7 @@ BigReal::BigReal(string realNumber) {
             integerPartString += realNumber[i];
         }
 
+//        cout << "IPS Cons :" << integerPartString << endl;
         // get the leading zeroes
         int dec = pointIndex + 1;
         for (; dec < realNumber.length(); ++dec) {
@@ -252,6 +253,7 @@ BigReal BigReal::operator+(BigReal &other) {
             decPartStr = "0" + decPartStr;
         }
     }
+//    cout << "Int " << intPartStr << endl;
     string test=intPartStr + "." + decPartStr;
     // cout<<test<<endl;
     // cout<<test.length()<<endl;

@@ -9,6 +9,11 @@ BigDecimalInt::BigDecimalInt(string decStr) {
     regex filter("^[+-]?[0-9]+");
     if (regex_match(decStr, filter)) {
 
+        if (decStr == "0" || decStr == "-0"){
+            decimalStr = decStr;
+            return;
+        }
+
         int i = 0;
         if (decStr[0] == '+' || decStr[0] == '-') {
 
