@@ -2,39 +2,40 @@
 
 // Defining functions, class methods
 
-// Youssef
-BigReal::BigReal(double realNumber) {
-
-    // assign the integer part
-    integerPart = BigDecimalInt(realNumber);
-
-    string realString = to_string(realNumber);
-
-    string decimalPartString = "";
-
-    // get the decimal point index
-    int pointIndex = realString.find('.');
-    // get the leading zeroes
-    int dec = pointIndex + 1;
-    for (; dec < realString.length(); ++dec) {
-
-        if (realString[dec] != '0') {
-            break;
-        }
-
-        decimalLeadingZeroes++;
-
-    }
-
-    // get the decimal part
-    for (; dec < realString.length(); ++dec) {
-        decimalPartString += realString[dec];
-    }
-
-    // only 6 digits, if less : complete with zeroes
-    decimalPart = BigDecimalInt(decimalPartString);
-
-}
+//// Youssef
+//BigReal::BigReal(double realNumber) {
+//
+//    // assign the integer part
+//    BigDecimalInt bI(realNumber);
+//    integerPart = ;
+//
+//    string realString = to_string(realNumber);
+//
+//    string decimalPartString = "";
+//
+//    // get the decimal point index
+//    int pointIndex = realString.find('.');
+//    // get the leading zeroes
+//    int dec = pointIndex + 1;
+//    for (; dec < realString.length(); ++dec) {
+//
+//        if (realString[dec] != '0') {
+//            break;
+//        }
+//
+//        decimalLeadingZeroes++;
+//
+//    }
+//
+//    // get the decimal part
+//    for (; dec < realString.length(); ++dec) {
+//        decimalPartString += realString[dec];
+//    }
+//
+//    // only 6 digits, if less : complete with zeroes
+//    decimalPart = BigDecimalInt(decimalPartString);
+//
+//}
 
 // Youssef
 BigReal::BigReal(string realNumber) {
@@ -48,7 +49,7 @@ BigReal::BigReal(string realNumber) {
 
         // assign the BDIs
         integerPart = BigDecimalInt(realNumber);
-        decimalPart = BigDecimalInt(0);
+        decimalPart = BigDecimalInt("0");
 
         // assign the real sign
         realSign = integerPart.sign();
@@ -66,7 +67,7 @@ BigReal::BigReal(string realNumber) {
 
         // assign the BDIs
         integerPart = BigDecimalInt(integerPartString);
-        decimalPart = BigDecimalInt(0);
+        decimalPart = BigDecimalInt("0");
 
         // assign the real sign
         realSign = integerPart.sign();
@@ -103,7 +104,7 @@ BigReal::BigReal(string realNumber) {
 
         // assign the BDIs
         if (integerPartString == "0") {
-            integerPart = BigDecimalInt(0);
+            integerPart = BigDecimalInt("0");
         } else {
             integerPart = BigDecimalInt(integerPartString);
         }
@@ -154,8 +155,8 @@ BigReal::BigReal(BigReal &&other) {
     this->realSign = other.realSign;
 
     // remove "other"
-    other.integerPart = 0;
-    other.decimalPart = 0;
+    other.integerPart = BigDecimalInt("0");
+    other.decimalPart = BigDecimalInt("0");
     other.decimalLeadingZeroes = 0;
     other.realSign = 0;
 
@@ -184,8 +185,8 @@ BigReal &BigReal::operator=(BigReal &&other) {
     this->realSign = other.realSign;
 
     // remove "other"
-    other.integerPart = 0;
-    other.decimalPart = 0;
+    other.integerPart = BigDecimalInt("0");
+    other.decimalPart = BigDecimalInt("0");
     other.decimalLeadingZeroes = 0;
     other.realSign = 0;
 
@@ -203,8 +204,8 @@ BigReal BigReal::operator+(BigReal &other) {
     int leadingZeros2 = other.decimalLeadingZeroes;
     int AddedZeros = 0;
     int BiggestSize;
-    string decPart1 = this->decimalPart.getDecimalStr();
-    string decPart2 = other.decimalPart.getDecimalStr();
+    string decPart1 = this->decimalPart.getNumber();
+    string decPart2 = other.decimalPart.getNumber();
     for (int i = 0; i < leadingZeros1; i++) {
         decPart1 = "0" + decPart1;
     }
@@ -225,20 +226,20 @@ BigReal BigReal::operator+(BigReal &other) {
         }
     }
     BiggestSize = decPart1.size();
-    BigDecimalInt B1 = intPart1.getDecimalStr() + decPart1, B2 = intPart2.getDecimalStr() + decPart2, Summed;
+    BigDecimalInt B1 = intPart1.getNumber() + decPart1, B2 = intPart2.getNumber() + decPart2, Summed;
     string decPartStr = "", intPartStr = "", Result;
     Summed = B1 + B2;
     int i = Summed.size() - 1;
     while (i > Summed.size() - BiggestSize - 1) {
-        if(Summed.getDecimalStr()[i]>='0' && Summed.getDecimalStr()[i]<='9'){
-            decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+        if(Summed.getNumber()[i]>='0' && Summed.getNumber()[i]<='9'){
+            decPartStr = Summed.getNumber()[i] + decPartStr;
 
         }
         i--;
     }
     i = 0;
     while (i < Summed.size() - BiggestSize) {
-        intPartStr += Summed.getDecimalStr()[i];
+        intPartStr += Summed.getNumber()[i];
         i++;
     }
 
@@ -272,8 +273,8 @@ BigReal BigReal::operator-(BigReal &other) {
     int leadingZeros2 = other.decimalLeadingZeroes;
     int AddedZeros = 0;
     int BiggestSize;
-    string decPart1 = this->decimalPart.getDecimalStr();
-    string decPart2 = other.decimalPart.getDecimalStr();
+    string decPart1 = this->decimalPart.getNumber();
+    string decPart2 = other.decimalPart.getNumber();
     for (int i = 0; i < leadingZeros1; i++) {
         decPart1 = "0" + decPart1;
     }
@@ -294,20 +295,20 @@ BigReal BigReal::operator-(BigReal &other) {
         }
     }
     BiggestSize = decPart1.size();
-    BigDecimalInt B1 = intPart1.getDecimalStr() + decPart1, B2 = intPart2.getDecimalStr() + decPart2, Summed;
+    BigDecimalInt B1 = intPart1.getNumber() + decPart1, B2 = intPart2.getNumber() + decPart2, Summed;
     string decPartStr = "", intPartStr = "", Result;
     Summed = B1 - B2;
     int i = Summed.size() - 1;
     while (i > Summed.size() - BiggestSize - 1) {
-        if(Summed.getDecimalStr()[i]>='0' && Summed.getDecimalStr()[i]<='9'){
-            decPartStr = Summed.getDecimalStr()[i] + decPartStr;
+        if(Summed.getNumber()[i]>='0' && Summed.getNumber()[i]<='9'){
+            decPartStr = Summed.getNumber()[i] + decPartStr;
 
         }
         i--;
     }
     i = 0;
     while (i < Summed.size() - BiggestSize) {
-        intPartStr += Summed.getDecimalStr()[i];
+        intPartStr += Summed.getNumber()[i];
         i++;
     }
 
@@ -377,12 +378,12 @@ int BigReal::sign() {
 ostream &operator<<(ostream &out, BigReal num) {
 
     // print the integer part, decimal point, leading zeroes, decimal part
-    out << num.integerPart.getDecimalStr();
+    out << num.integerPart.getNumber();
 //    if (num.integerPart.sign() != 0){
 //        out << "0";
 //    }
     out << "." << string(num.decimalLeadingZeroes, '0')
-        << num.decimalPart.getDecimalStr();
+        << num.decimalPart.getNumber();
 
     return out;
 

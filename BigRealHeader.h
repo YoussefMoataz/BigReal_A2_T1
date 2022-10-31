@@ -8,7 +8,8 @@
 
 #include <iostream>
 #include "regex"
-#include "BigDecimalInt/BigDecimalIntFunctions.cpp"
+//#include "BigDecimalInt/BigDecimalIntFunctions.cpp"
+#include "BDI/BigDecimalIntClass.cpp"
 
 using namespace std;
 // Prototypes, Constants and Classes
