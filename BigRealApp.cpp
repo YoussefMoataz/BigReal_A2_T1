@@ -153,12 +153,31 @@ int main() {
     BigReal br31("-0.02");
     BigReal br32("0.01");
     cout << br31 + br32 << endl; // -0.01
-    cout << (br31 + br32).size() << endl; // 4
+    cout << (br31 + br32).size() << endl; // 3
+    cout << (br31 + br32).sign() << endl; // 0
     printDashes();
 
     BigReal br33("0.1");
     BigReal br34("0.022");
     cout << br33 + br34 << endl; // 0.122
+    printDashes();
+
+    cout << BigReal("-50") << endl;
+    printDashes();
+
+    BigReal br35("-50.1");
+    BigReal br36("-50.1");
+    cout << br35 + br36 << endl; // -100
+    printDashes();
+
+    BigDecimalInt bi37("-50");
+    BigDecimalInt bi38("-50");
+    cout << bi37 + bi38 << endl; // -100.2
+    printDashes();
+
+    BigReal br39("0.1");
+    BigReal br40("0.022");
+    cout << br39 - br40 << endl; // 0.078
     printDashes();
 
     return 0;

@@ -54,4 +54,6 @@ public:
 
 inline void printDashes();
 
+inline string parseSign(int sign);
+
 // End of the file
