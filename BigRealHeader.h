@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include "regex"
-//#include "BigDecimalInt/BigDecimalIntFunctions.cpp"
 #include "BDI/BigDecimalIntClass.cpp"
 
 using namespace std;
@@ -19,7 +18,6 @@ private:
     BigDecimalInt integerPart;
     BigDecimalInt decimalPart;
 
-    // BDI removes leading zeroes, they are important in decimalPart, I store them
     int decimalLeadingZeroes = 0;
     int realSign;
     int realRemainder = 0;

@@ -2,40 +2,46 @@
 
 // Defining functions, class methods
 
-//// Youssef
-//BigReal::BigReal(double realNumber) {
-//
-//    // assign the integer part
-//    BigDecimalInt bI(realNumber);
-//    integerPart = ;
-//
-//    string realString = to_string(realNumber);
-//
-//    string decimalPartString = "";
-//
-//    // get the decimal point index
-//    int pointIndex = realString.find('.');
-//    // get the leading zeroes
-//    int dec = pointIndex + 1;
-//    for (; dec < realString.length(); ++dec) {
-//
-//        if (realString[dec] != '0') {
-//            break;
-//        }
-//
-//        decimalLeadingZeroes++;
-//
-//    }
-//
-//    // get the decimal part
-//    for (; dec < realString.length(); ++dec) {
-//        decimalPartString += realString[dec];
-//    }
-//
-//    // only 6 digits, if less : complete with zeroes
-//    decimalPart = BigDecimalInt(decimalPartString);
-//
-//}
+// Youssef
+BigReal::BigReal(double realNumber) {
+
+
+
+    string realString = to_string(realNumber);
+
+    string decimalPartString = "";
+
+    // get the decimal point index
+    int pointIndex = realString.find('.');
+
+    string ipString;
+    for (int i = 0; i < pointIndex; ++i) {
+        ipString+= realString[i];
+    }
+    // assign the integer part
+    integerPart = BigDecimalInt (ipString);
+
+    // get the leading zeroes
+    int dec = pointIndex + 1;
+    for (; dec < realString.length(); ++dec) {
+
+        if (realString[dec] != '0') {
+            break;
+        }
+
+        decimalLeadingZeroes++;
+
+    }
+
+    // get the decimal part
+    for (; dec < realString.length(); ++dec) {
+        decimalPartString += realString[dec];
+    }
+
+    // only 6 digits, if less : complete with zeroes
+    decimalPart = BigDecimalInt(decimalPartString);
+
+}
 
 // Youssef
 BigReal::BigReal(string realNumber) {
