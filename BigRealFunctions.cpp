@@ -49,6 +49,7 @@ BigReal::BigReal(string realNumber) {
     regex filter1("^[+-]?[0-9]+");
     regex filter2("^[+-]?[0-9]+[.][0]$");
     regex filter3("^[+-]?[0-9]+[.][0-9]+");
+    regex filter4("^[+-]?[.][0-9]+");
 
     if (regex_match(realNumber, filter1)) {
 
@@ -120,8 +121,44 @@ BigReal::BigReal(string realNumber) {
         realSign = integerPart.sign();
 
 
-    } else {
-        cout << "Invalid Real Input";
+    } else if (regex_match(realNumber, filter4)) {
+
+        string integerPartString = "", decimalPartString = "";
+
+        // get the decimal point index
+        int pointIndex = realNumber.find('.');
+
+        // get the integer part
+        for (int i = 0; i < pointIndex; ++i) {
+            integerPartString += realNumber[i];
+        }
+
+//        cout << "IPS Cons :" << integerPartString << endl;
+        // get the leading zeroes
+        int dec = pointIndex + 1;
+        for (; dec < realNumber.length(); ++dec) {
+
+            if (realNumber[dec] != '0') {
+                break;
+            }
+
+            decimalLeadingZeroes++;
+
+        }
+
+        // get the decimal part
+        for (; dec < realNumber.length(); ++dec) {
+            decimalPartString += realNumber[dec];
+        }
+
+        integerPart = BigDecimalInt(integerPartString + "0");
+        decimalPart = BigDecimalInt(decimalPartString);
+
+        // assign the real sign
+        realSign = integerPart.sign();
+
+    }else {
+            cout << "Invalid Real Input";
     }
 
 }

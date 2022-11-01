@@ -180,6 +180,20 @@ int main() {
     cout << br39 - br40 << endl; // 0.078
     printDashes();
 
+    BigReal br41(".50");
+    BigReal br42("-.300");
+    cout << br41.sign() << endl; // 1
+    cout << br41 << endl; // 0.50
+    cout << br42 << endl; // -0.300
+    printDashes();
+
+    BigReal br43(".50");
+    BigReal br44("-.300");
+    cout << br44.sign() << endl; // 0
+    cout << br41 + br39 << endl; // 0.60
+    cout << br42 + br39 << endl; // -0.200
+    printDashes();
+
     return 0;
 }
 
