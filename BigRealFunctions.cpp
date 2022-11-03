@@ -157,8 +157,8 @@ BigReal::BigReal(string realNumber) {
         // assign the real sign
         realSign = integerPart.sign();
 
-    }else {
-            cout << "Invalid Real Input";
+    } else {
+        cout << "Invalid Real Input";
     }
 
 }
@@ -294,7 +294,80 @@ BigReal BigReal::operator+(BigReal &other) {
 //    cout << intPartStr << " IPS" << endl;
     if (intPartStr.size() == 0) {
 //        if (Summed.sign() < 0) {
-            intPartStr += "0";
+        intPartStr += "0";
+//        }
+        for (int j = 0; j < BiggestSize - (decPartStr.size() - 1) - 1; i++) {
+            decPartStr = "0" + decPartStr;
+        }
+    }
+//    cout << "Int " << intPartStr << endl;
+//    cout << parseSign(Summed.sign()) << " sign" << endl;
+    string test = parseSign(Summed.sign()) + intPartStr + "." + decPartStr;
+//     cout<<test<<endl;
+    // cout<<test.length()<<endl;
+    BigReal FinalResult = BigReal(test);
+    return FinalResult;
+}
+
+// Hassan
+BigReal BigReal::operator+(BigReal &&other) {
+    //definning variables
+    BigDecimalInt intPart1 = this->integerPart;
+    BigDecimalInt intPart2 = other.integerPart;
+    int sign1 = intPart1.sign();
+    int sign2 = intPart2.sign();
+//    cout << parseSign(sign1) << parseSign(sign2) << " signs" << endl;
+    int leadingZeros1 = this->decimalLeadingZeroes;
+    int leadingZeros2 = other.decimalLeadingZeroes;
+    int AddedZeros = 0;
+    int BiggestSize;
+    string decPart1 = this->decimalPart.getNumber();
+    string decPart2 = other.decimalPart.getNumber();
+
+    for (int i = 0; i < leadingZeros1; i++) {
+        decPart1 = "0" + decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++) {
+        decPart2 = "0" + decPart2;
+    }
+    if (decPart1.size() > decPart2.size()) {
+        BiggestSize = decPart1.size();
+        AddedZeros = decPart1.size() - decPart2.size();
+        for (int i = 0; i < AddedZeros; i++) {
+            decPart2 = decPart2 + "0";
+        }
+    } else if (decPart2.size() > decPart1.size()) {
+        BiggestSize = decPart2.size();
+        AddedZeros = decPart2.size() - decPart1.size();
+        for (int i = 0; i < AddedZeros; i++) {
+            decPart1 = decPart1 + "0";
+        }
+    }
+    BiggestSize = decPart1.size();
+    BigDecimalInt B1 = (parseSign(sign1) + intPart1.getNumber()) + decPart1;
+    BigDecimalInt B2 = (parseSign(sign2) + intPart2.getNumber()) + decPart2;
+    BigDecimalInt Summed;
+    string decPartStr = "", intPartStr = "", Result;
+    Summed = B1 + B2;
+//    cout << parseSign(Summed.sign()) << endl;
+    int i = Summed.size() - 1;
+    while (i > Summed.size() - BiggestSize - 1) {
+        if (Summed.getNumber()[i] >= '0' && Summed.getNumber()[i] <= '9') {
+            decPartStr = Summed.getNumber()[i] + decPartStr;
+
+        }
+        i--;
+    }
+    i = 0;
+    while (i < Summed.size() - BiggestSize) {
+        intPartStr += Summed.getNumber()[i];
+        i++;
+    }
+
+//    cout << intPartStr << " IPS" << endl;
+    if (intPartStr.size() == 0) {
+//        if (Summed.sign() < 0) {
+        intPartStr += "0";
 //        }
         for (int j = 0; j < BiggestSize - (decPartStr.size() - 1) - 1; i++) {
             decPartStr = "0" + decPartStr;
@@ -372,6 +445,68 @@ BigReal BigReal::operator-(BigReal &other) {
     return FinalResult;
 }
 
+// Hassan
+BigReal BigReal::operator-(BigReal &&other) {
+    //definning variables
+    BigDecimalInt intPart1 = this->integerPart;
+    BigDecimalInt intPart2 = other.integerPart;
+    int sign1 = intPart1.sign();
+    int sign2 = intPart2.sign();
+    int leadingZeros1 = this->decimalLeadingZeroes;
+    int leadingZeros2 = other.decimalLeadingZeroes;
+    int AddedZeros = 0;
+    int BiggestSize;
+    string decPart1 = this->decimalPart.getNumber();
+    string decPart2 = other.decimalPart.getNumber();
+    for (int i = 0; i < leadingZeros1; i++) {
+        decPart1 = "0" + decPart1;
+    }
+    for (int i = 0; i < leadingZeros2; i++) {
+        decPart2 = "0" + decPart2;
+    }
+    if (decPart1.size() > decPart2.size()) {
+        BiggestSize = decPart1.size();
+        AddedZeros = decPart1.size() - decPart2.size();
+        for (int i = 0; i < AddedZeros; i++) {
+            decPart2 = decPart2 + "0";
+        }
+    } else if (decPart2.size() > decPart1.size()) {
+        BiggestSize = decPart2.size();
+        AddedZeros = decPart2.size() - decPart1.size();
+        for (int i = 0; i < AddedZeros; i++) {
+            decPart1 = decPart1 + "0";
+        }
+    }
+    BiggestSize = decPart1.size();
+    BigDecimalInt B1 = (parseSign(sign1) + intPart1.getNumber()) + decPart1;
+    BigDecimalInt B2 = (parseSign(sign2) + intPart2.getNumber()) + decPart2;
+    BigDecimalInt Summed;
+    string decPartStr = "", intPartStr = "", Result;
+    Summed = B1 - B2;
+    int i = Summed.size() - 1;
+    while (i > Summed.size() - BiggestSize - 1) {
+        if (Summed.getNumber()[i] >= '0' && Summed.getNumber()[i] <= '9') {
+            decPartStr = Summed.getNumber()[i] + decPartStr;
+
+        }
+        i--;
+    }
+    i = 0;
+    while (i < Summed.size() - BiggestSize) {
+        intPartStr += Summed.getNumber()[i];
+        i++;
+    }
+
+    if (intPartStr.size() == 0) {
+        intPartStr += "0";
+        for (int j = 0; j < BiggestSize - (decPartStr.size() - 1) - 1; i++) {
+            decPartStr = "0" + decPartStr;
+        }
+    }
+    string test = parseSign(Summed.sign()) + intPartStr + "." + decPartStr;
+    BigReal FinalResult = BigReal(test);
+    return FinalResult;
+}
 
 // Mohamed
 bool BigReal::operator<(BigReal anotherReal) {

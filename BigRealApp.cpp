@@ -1,3 +1,17 @@
+/*
+FCAI - Programming 2 - 2022 - Assignment 2 - Task 1
+Program Name:           Big Real
+Program Description:    This program is presenting the new data type BigReal which uses a BigDecimalInt library
+                        with some additions such as working with limitless non-int values, bigger than "long double"
+Last Modification Date: November 2, 2022
+Version:                v4.1.7
+Authors:                Youssef Moataz, Hassan Magdy,   Mohamed Maged
+ID:                     20210488,       20210126,       20210352
+Group:                  A
+Labs:                   S9-S10
+Purpose:                Mastering OOP by making a new limitless data type (with decimal point)
+*/
+
 #include "BigRealFunctions.cpp"
 
 int main() {
@@ -192,6 +206,15 @@ int main() {
     cout << br44.sign() << endl; // 0
     cout << br41 + br39 << endl; // 0.60
     cout << br42 + br39 << endl; // -0.200
+    printDashes();
+
+    // Doctor's testcase
+    BigReal n1 ("11.9000000000000000000000000000000001");
+    BigReal n2 ("2333333333339.1134322222222292");
+    BigReal n3 = n1 + n2;
+    cout << n3 << endl;
+    n3 = n3 + BigReal (0.9);
+    cout<< n3 << endl;
     printDashes();
 
     return 0;

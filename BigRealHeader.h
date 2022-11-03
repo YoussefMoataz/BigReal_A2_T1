@@ -32,9 +32,14 @@ public:
     inline BigReal(BigReal &&other); // Move constructor
     inline BigReal &operator=(BigReal &other); // Assignment operator
     inline BigReal &operator=(BigReal &&other); // Move assignment
+
     inline BigReal operator+(BigReal &other);
 
+    inline BigReal operator+(BigReal &&other);
+
     inline BigReal operator-(BigReal &other);
+
+    inline BigReal operator-(BigReal &&other);
 
     inline bool operator<(BigReal anotherReal);
 
