@@ -1,4 +1,4 @@
-# BigReal_A2_T1
+# BigReal
 
 ### Project details :
 * Faculty of Computers and Artificial Intellience - Cairo University
