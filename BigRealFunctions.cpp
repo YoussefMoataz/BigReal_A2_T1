@@ -510,10 +510,28 @@ BigReal BigReal::operator-(BigReal &&other) {
 
 // Mohamed
 bool BigReal::operator<(BigReal anotherReal) {
+    string decPart1 = decimalPart.getNumber(), decPart2 = anotherReal.decimalPart.getNumber();
+    int lenDiff = anotherReal.decimalPart.getNumber().length() - decimalPart.getNumber().length();
+    lenDiff = abs(lenDiff);
+    // to add zeros to the left of the smaller decimal part
+    if (anotherReal.decimalPart.getNumber().length() > decimalPart.getNumber().length())
+    {
+        for (int i = 0; i < lenDiff; i++)
+        {
+            decPart1 += "0";
+        }
+    }
+    else if (anotherReal.decimalPart.getNumber().length() > decimalPart.getNumber().length())
+    {
+        for (int i = 0; i < lenDiff; i++)
+        {
+            decPart2 += "0";
+        }
+    }
     if (integerPart < anotherReal.integerPart) {
         return true;
     } else if (integerPart == anotherReal.integerPart) {
-        if (decimalPart < anotherReal.decimalPart) {
+        if (decPart1 < decPart2) {
             return true;
         }
     }
@@ -522,10 +540,29 @@ bool BigReal::operator<(BigReal anotherReal) {
 
 // Mohamed
 bool BigReal::operator>(BigReal anotherReal) {
+    string decPart1 = decimalPart.getNumber(), decPart2 = anotherReal.decimalPart.getNumber();
+    int lenDiff = anotherReal.decimalPart.getNumber().length() - decimalPart.getNumber().length();
+    lenDiff = abs(lenDiff);
+    // to add zeros to the left of the smaller decimal part
+    if (anotherReal.decimalPart.getNumber().length() > decimalPart.getNumber().length())
+    {
+        for (int i = 0; i < lenDiff; i++)
+        {
+            decPart1 += "0";
+        }
+    }
+    else if (anotherReal.decimalPart.getNumber().length() > decimalPart.getNumber().length())
+    {
+        for (int i = 0; i < lenDiff; i++)
+        {
+            decPart2 += "0";
+        }
+    }
+
     if (integerPart > anotherReal.integerPart) {
         return true;
     } else if (integerPart == anotherReal.integerPart) {
-        if (decimalPart > anotherReal.decimalPart) {
+        if (decPart1 > decPart2) {
             return true;
         }
     }

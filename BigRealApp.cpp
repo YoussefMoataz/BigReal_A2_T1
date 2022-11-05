@@ -208,6 +208,18 @@ int main() {
     cout << br42 + br39 << endl; // -0.200
     printDashes();
 
+    BigReal br45("0.5");
+    BigReal br46("0.300");
+    cout << (br45 < br46) << endl; // 0
+    cout << (br45 > br46) << endl; // 1
+    printDashes();
+
+    BigReal br47("-0.5");
+    BigReal br48("0.300");
+    cout << (br47 < br48) << endl; // 1
+    cout << (br47 > br48) << endl; // 0
+    printDashes();
+
     // Doctor's testcase
     BigReal n1 ("11.9000000000000000000000000000000001");
     BigReal n2 ("2333333333339.1134322222222292");
